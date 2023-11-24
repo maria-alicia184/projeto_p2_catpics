@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'src/app.dart';
+import 'package:projeto_p2/src/app.dart';
 
 void main() {
-  var app = AppState();
-  runApp(app as Widget);
+  var app = App();
+  runApp(app);
 }
