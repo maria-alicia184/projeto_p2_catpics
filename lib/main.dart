@@ -3,5 +3,5 @@ import 'src/app.dart';
 
 void main() {
   var app = AppState();
-  runApp(app);
+  runApp(app as Widget);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:projeto_p2/src/models/image_model.dart';
+import 'package:projeto_p2/src/services/pics_service.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -11,21 +12,14 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  int geraImagens = 0;
+  String id = '9g5';
+  String url = 'https://cdn2.thecatapi.com/images/9g5.jpg';
+  ImageModel? data;
 
-  void obterImagem() {
-    var url = Uri.https(
-      'api.thecatapi.com',
-      '/v1/images/search',
-      {'query': '5', 'page': ''},
-    );
-    var req = http.Request('get', url);
-    req.headers.addAll({
-      'Authorization': 'chave',
-    });
-    req.send().then((result) {
-      print(result.stream);
-    });
+  void handleButtonPress() async {
+    var response = await getImage();
+
+    setState(() => data = response);
   }
 
   @override
@@ -46,13 +40,13 @@ class AppState extends State<App> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xFF60EBC0), // Cor do botão #60EBC0
-          onPressed: obterImagem,
+          onPressed: handleButtonPress,
           child: const Icon(
             Icons.add_a_photo,
             color: Colors.white,
           ),
         ),
-        body: Text('$geraImagens'),
+        body: Text('$data'),
       ),
     );
   }
