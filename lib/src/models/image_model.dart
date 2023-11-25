@@ -1,16 +1,14 @@
 class ImageModel {
-  late String id;
-  late String url;
+  String url;
 
-  ImageModel({required this.id, required this.url});
-  //named constructor
-  ImageModel.fromJson(Map<String, dynamic> decodedJson) {
-    id = decodedJson['id'];
-    url = decodedJson['url'];
-  }
+  ImageModel({required this.url});
+
+  // Named constructor with type annotations
+  ImageModel.fromJson(Map<String, dynamic> decodedJson)
+      : url = decodedJson['url'] ?? '';
 
   @override
   String toString() {
-    return 'ImageModel{id: $id, url: $url}';
+    return 'ImageModel{url: $url}';
   }
 }

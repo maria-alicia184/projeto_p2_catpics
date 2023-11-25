@@ -16,6 +16,9 @@ class ImageList extends StatelessWidget {
           fit: BoxFit.cover,
           width: 1080,
           height: 809,
+          errorBuilder: (context, error, stackTrace) {
+            return const Text('Erro ao carregar a imagem');
+          },
         );
       },
     );
